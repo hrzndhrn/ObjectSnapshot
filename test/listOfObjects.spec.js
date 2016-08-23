@@ -46,8 +46,8 @@ test("ObjectSnapshot: list of object", function(t) {
   t.false(snapshot.hasChanges("list.0"),
       "snapshot has no changes for key path 'list.0'");
 
-  t.comment("- snapshot.reset()");
-  snapshot.reset();
+  t.comment("- snapshot.rollback()");
+  snapshot.rollback();
 
   t.false(snapshot.hasChanges(), "snapshot has no changes");
 
@@ -62,8 +62,8 @@ test("ObjectSnapshot: list of object", function(t) {
 
   t.true(snapshot.hasChanges(), "snapshot has changes");
 
-  t.comment("- snapshot.snapshot()");
-  snapshot.snapshot();
+  t.comment("- snapshot.commit()");
+  snapshot.commit();
 
   t.false(snapshot.hasChanges(), "snapshot has no changes");
 

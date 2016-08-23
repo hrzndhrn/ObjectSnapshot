@@ -160,10 +160,11 @@ function proxify<T:Object>(object: T, snapshot: ObjectSnapshot): Proxy<T> {
     return true;
   }
 
+  /* @todo: implement
   function deletePropertyObject(target, key) {
-    // @todo: implement
     return true;
   }
+  */
 
   // Create the proxy.
   let proxy: Proxy<T>;
@@ -172,11 +173,11 @@ function proxify<T:Object>(object: T, snapshot: ObjectSnapshot): Proxy<T> {
     // Save initial length of the array.
     snapshot._initialArrayLength = object.length;
     proxy = new Proxy(object, {
-      get:get, set:setArray, deleteProperty:deletePropertyArray
+      get:get, set:setArray
     });
   } else {
     proxy = new Proxy(object, {
-      get:get, set:setObject, deleteProperty: deletePropertyObject
+      get:get, set:setObject
     });
   }
 

@@ -77,7 +77,7 @@ test("ObjectSnapshot with nested objects", function(t) {
   t.true(snapshot.hasChanges(),
       "snapshot has changes before calling reset");
 
-  snapshot.reset();
+  snapshot.rollback();
 
   t.false(snapshot.hasChanges(),
       "snapshot has ino changes after calling reset");
@@ -97,7 +97,7 @@ test("ObjectSnapshot with nested objects", function(t) {
   t.true(snapshot.hasChanges(),
       "snapshot has changes before calling snapshot");
 
-  snapshot.snapshot();
+  snapshot.commit();
 
   t.false(snapshot.hasChanges(),
       "snapshot has ino changes after calling snapshot");

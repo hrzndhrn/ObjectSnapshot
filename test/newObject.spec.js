@@ -40,7 +40,7 @@ test("ObjectSnapshot: new object", function(t) {
   // --------------------------------------------------------------------------
   t.comment("ObjectSnapshot: reset");
 
-  snapshot.reset();
+  snapshot.rollback();
 
   t.deepEqual(observable.y, {foo:"bar"},
       "observable.y === {foo: 'bar'}");
@@ -55,7 +55,7 @@ test("ObjectSnapshot: new object", function(t) {
       "observable.x === {foo:'baz'}");
   t.true(snapshot.hasChanges(), "snapshot has changes");
 
-  snapshot.snapshot();
+  snapshot.commit();
 
   t.deepEqual(observable.y, {foo:"baz"},
       "observable.x === {foo:'baz'}");

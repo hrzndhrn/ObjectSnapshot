@@ -4,7 +4,7 @@ import {test} from "tape";
 // import {dumpChanges} from "./util/dump";
 import {ObjectSnapshot} from "../src/ObjectSnapshot";
 
-test.only("ObjectSnapshot: assign object", function(t) {
+test("ObjectSnapshot: assign object", function(t) {
   t.ok(typeof ObjectSnapshot === "function",
       "ObjectSnapshot is imported");
 

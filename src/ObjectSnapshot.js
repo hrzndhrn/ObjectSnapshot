@@ -109,7 +109,7 @@ class ObjectSnapshot {
    * Takes a snapshot of the current data. Atfer calling this function the
    * snapshot will return false for {@link hasChanges}.
    */
-  snapshot() {
+  commit() {
     // The changes are obsolete.
     this._changed = new Map();
 
@@ -118,7 +118,7 @@ class ObjectSnapshot {
     }
 
     // call snapshot for all sub-snapshots
-    this._mapSubSnapshots.forEach( (sub) => sub.snapshot());
+    this._mapSubSnapshots.forEach( (sub) => sub.commit());
   }
 
   /**
@@ -202,13 +202,13 @@ class ObjectSnapshot {
    * Resets the object to the inital state or rather to the state of the last
    * {@link snapshot}.
    */
-  reset() {
+  rollback() {
     this._changed.forEach((value, key) => {
       // $FlowFixMe: Indexable signature not found in ...
       this._proxy[key] = value;
     });
 
-    this._mapSubSnapshots.forEach( (sub) => sub.reset());
+    this._mapSubSnapshots.forEach( (sub) => sub.rollback());
   }
 
   /**

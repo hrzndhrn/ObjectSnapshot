@@ -46,7 +46,7 @@ test("ObjectSnapshot with a simple object", function(t) {
 
   // ---------------------------------------------------------------------------
   t.comment("ObjectSnapshot: reset changes");
-  snapshot.reset();
+  snapshot.rollback();
 
   t.equal(observable.a, 1, "observable.a === 1");
   t.equal(observable.b, 2, "observable.b === 2");
@@ -66,7 +66,7 @@ test("ObjectSnapshot with a simple object", function(t) {
   t.true(snapshot.hasOwnChanges(),
       "snapshot has own changes before calling snapshot");
 
-  snapshot.snapshot();
+  snapshot.commit();
 
   t.false(snapshot.hasChanges(),
       "snapshot has no changes after calling snapshot");

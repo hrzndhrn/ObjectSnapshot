@@ -54,7 +54,7 @@ test("ObjectSnapshot: new array shorter", function(t) {
 
   dumpChanges(snapshot);
 
-  snapshot.reset();
+  snapshot.rollback();
 
   array = [1, 2, 3, 4];
   t.true(arrayEqual(observable.x, array), `observable.x === ${array}`);
@@ -70,7 +70,7 @@ test("ObjectSnapshot: new array shorter", function(t) {
   t.true(arrayEqual(observable.x, array), `observable.x === ${array}`);
   t.true(snapshot.hasChanges(), "snapshot has changes");
 
-  snapshot.snapshot();
+  snapshot.commit();
 
   t.true(arrayEqual(observable.x, array), `observable.x === ${array}`);
   t.false(snapshot.hasChanges(), "snapshot has no changes");

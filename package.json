@@ -1,6 +1,6 @@
 {
   "name": "ObjectSnapshot",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A proxy for objects to observe changes.",
   "keywords": "proxy observe snapshot",
   "author": "Marcus Kruse",
